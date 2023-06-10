@@ -1,0 +1,38 @@
+/* pages/orderlist/orderlist.wxss */
+page{
+    height: 100%;
+  }
+  .orderlist{
+    width: 100%;
+    height: 400rpx;
+    border-bottom: 1px solid gainsboro;
+  }
+  
+  .username{
+    margin-top: 20rpx;
+    font-weight: bolder;
+  }
+  .orderid{
+    margin-top: 20rpx;
+    font-weight: bolder;
+  }
+  .usertell{
+    margin-top: 20rpx;
+    font-weight: bolder;
+  }
+  .proname{
+    margin-top: 20rpx;
+    font-weight: bolder;
+  }
+  .makedate{
+    margin-top: 20rpx;
+    font-weight: bolder;
+  }
+  .Info{
+    margin-top: 20rpx;
+    font-weight: bolder;
+  }
+  .text{
+    color: gray;
+    
+  }

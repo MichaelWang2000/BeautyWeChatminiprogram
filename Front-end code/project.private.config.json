@@ -1,0 +1,8 @@
+{
+    "projectname": "beautifulApp",
+    "setting": {
+        "compileHotReLoad": false,
+        "urlCheck": false
+    },
+    "description": "Project configuration file, more information: https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html"
+}

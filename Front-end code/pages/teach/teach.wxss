@@ -1,0 +1,149 @@
+/* pages/teach/teach.wxss */
+
+page{
+
+    height: 100%;
+  
+  }
+  .Teach-top{
+    width: 100%;
+    height: 45%;
+    /* border: 1px solid red; */
+  }
+  
+  .Teach-top .lb{
+    height: 100%;
+  }
+  
+  .Teach-top image{
+    width: 100%;
+    height: 100%;
+  }
+  
+  .Teach{
+  
+    margin-top: 20rpx;
+  
+    width: 100%;
+  
+  }
+  
+  .Teach .teach-list{
+  
+    width: 100%;
+  
+  }
+  
+  .list-item{
+  
+    width: 100%;
+  
+    height: 200rpx;
+  
+    border-bottom: 1px solid gainsboro;
+  
+    display: flex;
+  
+    justify-content: space-around; 
+  
+  }
+  
+  .list-item .img{
+  
+    margin-top: 10rpx;
+    
+    height: 80%;
+  
+    width: 40%;
+  
+    /* border: 1px solid black; */
+  
+  }
+  
+  .list-item image{
+    
+    width: 100%;
+  
+    height: 100%;
+  
+    
+  }
+  .list-item .text{
+    
+    margin-top: 10rpx;
+  
+    height: 80%;
+  
+    width: 55%;
+  
+    /* border: 1px solid black; */
+  
+    position: relative;
+  }
+  
+  .text .teach-name{
+  
+    font-size: 35rpx;
+  
+    font-weight: bolder;
+  
+  }
+  .text .teach-id{
+  
+    margin-top: 30rpx;
+  
+    font-size: 33rpx;
+  
+    font-weight: bolder;
+  
+    color: red;
+  }
+  
+  .text .teach-desc{
+  
+    font-size: 28rpx;
+  
+    font-weight: bolder;
+  
+    color: gainsboro;
+    
+    white-space: nowrap;
+  
+    overflow: hidden;
+  
+    text-overflow: ellipsis;
+  }
+  
+  
+  .search{
+    padding: 0 40rpx;
+    margin-top: 40rpx;
+  }
+  
+  .search .top{
+    font-size: 25px;
+    font-weight: bolder;
+    text-align: center;
+  }
+  .search input{
+    border: 1px solid #999;
+    padding: 5rpx 10rpx;
+    margin-top: 10rpx;
+    border-radius: 10rpx;
+  }
+  
+  
+  .orderFont{
+    font-size: 36rpx;
+    font-weight: bold;
+  }
+  
+  .formItem{
+    margin-top: 15rpx;
+  }
+  
+  .orderBtn{
+    color: ghostwhite;
+    background-color: pink;
+    margin: 40rpx 0;
+  }

@@ -1,0 +1,25 @@
+<!--pages/detail/detail.wxml-->
+
+<!-- 第一层 -->
+<view class ="img">
+<image wx:if="{{image}}" src="{{'http://localhost:8080/images/'+image}}"></image>
+</view>
+
+<!-- 第二部分 -->
+<view class ="proInfo">
+<view>
+<text class="proname">{{proInfo.proname}}</text>
+<text class="proprice">价格：¥{{proInfo.proprice}}</text>
+</view>
+<view class = "prodesc">{{proInfo.proexplain}}</view>
+<image class="iconImage" bindtap="like" src="/images/like_icon_HL.png"></image>
+</view>
+
+<!-- 第三部分 -->
+<view class ="prostep">
+    <view  class="dtpn">详情描述</view>
+    <view class="dtp">{{proInfo.prostep}} </view>
+</view>
+
+<!-- 第四部分 -->
+<button class="btn" bindtap="toOrder" data-id="{{proInfo.id}}" data-img="{{image}}" data-proname="{{proInfo.proname}}" style = "width: 80%;height:100rpx; color:white; background-color: red;">立即预约</button>

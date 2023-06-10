@@ -1,0 +1,44 @@
+{
+    "entryPagePath": "pages/index/index",
+    "pages": [
+        "pages/order/order",
+        "pages/index/index",
+        "pages/logs/logs",
+        "pages/my/my",
+        "pages/teach/teach",
+        "pages/detail/detail",
+        "pages/orderlist/orderlist",
+        "pages/Torder/Torder",
+        "pages/Tdetail/Tdetail",
+        "pages/like/like"
+    ],
+    "tabBar": {
+        "list": [
+            {
+                "pagePath": "pages/index/index",
+                "text": "首页",
+                "iconPath": "images/index_icon.png",
+                "selectedIconPath": "images/index_icon_HL.png"
+            },
+            {
+                "pagePath": "pages/teach/teach",
+                "text": "技师",
+                "iconPath": "images/skill_icon.png",
+                "selectedIconPath": "images/skill_icon_HL.png"
+            },
+            {
+                "pagePath": "pages/my/my",
+                "text": "我的",
+                "iconPath": "images/user_icon.png",
+                "selectedIconPath": "images/user_icon_HL.png"
+            }
+        ]
+    },
+    "window": {
+        "navigationBarBackgroundColor": "#ff6699",
+        "navigationBarTextStyle": "white",
+        "navigationBarTitleText": "点我马上变美"
+    },
+    "style": "v2",
+    "sitemapLocation": "sitemap.json"
+}

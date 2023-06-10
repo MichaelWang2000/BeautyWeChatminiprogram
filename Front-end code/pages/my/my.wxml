@@ -1,0 +1,11 @@
+<!--index.wxml-->
+<view class="header">
+  <button class="button" wx:if="{{!userInfo}}" bindtap="login" type="primary" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">授权登录</button>
+  <view wx:else class="root">
+    <image src="{{userInfo.avatarUrl}}" class="toxiang"></image>
+    <text class="nicheng">{{userInfo.nickName}}</text>
+    <text class="orderlist" bindtap="toOrderlist" data-nickName="{{userInfo.nickName}}" style="width:50%">订单查询</text>
+    <text class="like" bindtap="tolike" data-nickName="{{userInfo.nickName}}" style="width: 50%;">我的收藏</text>
+    <text class="login_out" bindtap="loginout" style="width:50%">退出登录</text>
+  </view>
+  </view>

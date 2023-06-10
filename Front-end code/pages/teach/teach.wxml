@@ -1,0 +1,59 @@
+<!--pages/teach/teach.wxml-->
+
+<!-- 顶部技师轮播图 -->
+<view class="Teach-top">
+  <swiper
+      class = "lb" 
+      indicator-dots = "true" 
+      indicator-active-color = "#ffb6c1"
+      autoplay = "true"
+      interval = "3000">
+      <block wx:for="{{teachers}}" wx:key="teachers">
+        <swiper-item><image src = "{{'http://localhost:8080/images/'+item.imageurl}}"></image></swiper-item>
+      </block>
+  </swiper>
+
+</view>
+
+<!--中部 搜索栏-->
+<view class="search">
+  <view class="top">搜索</view>
+  <form catchsubmit="formSubmit">
+    <view class="formItem"> 
+        <view class="orderFont">技师姓名：</view>
+        <input placeholder="请输入技师姓名" type="text" name="techname"></input>
+    </view>
+    <button  formType="submit" style="width:50%" class="orderBtn">搜索</button>
+  </form>
+</view>
+
+<!-- 技师总览 -->
+<view class="Teach">
+  <view class="teach-list">
+    
+    <block wx:for="{{teachers}}" wx:key="teachers">
+    <view class="list-item" 
+          bindtap="toDetail" 
+          data-name="{{item.techname}}"
+          data-id="{{item.id}}"
+          >
+      
+      <view class="img"><image src="{{'http://localhost:8080/images/'+item.imageurl}}"></image></view>
+      
+      <view class="text">
+        
+        <view class="teach-name">{{item.techname}}</view>
+
+        <view class="teach-id">编号：{{item.id}}</view>
+
+        <view class="teach-desc">描述：{{item.techexplain}}</view>
+      
+      </view>
+    
+    </view>
+
+  </block>
+
+  </view>
+  
+</view>

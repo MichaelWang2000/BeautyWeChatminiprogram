@@ -1,0 +1,45 @@
+<!--顶部 轮播图-->
+<view class="content-top">
+<swiper class="lb" indicator-dots="true" indicator-active-color="#ff6699" autoplay="true" interval="3000">
+<block wx:for="{{banner}}"  wx:key="banner">
+<swiper-item><image src="{{'http://localhost:8080/images/'+item.imageurl}}"></image></swiper-item>
+</block>
+</swiper>
+</view>
+
+
+<!--中部 导航栏-->
+<view class = "content-center">
+    <view class ="nav">
+    <block wx:for="{{nav}}" wx:key="nav">
+        <view class= "nav-item" bindtap="navpro" data-name="{{item.imagetitle}}">
+            <image src = "{{'http://localhost:8080/images/'+item.imageurl}}"></image>
+            <text>{{item.imagetitle}}</text>   
+            </view>
+            </block>
+    </view>
+</view>
+
+
+<!--底部 项目信息的展示-->
+<view class ="content-bottom">
+    <view class="sub-list">
+     <block wx:for="{{sub}}" wx:key="sub">
+        <view class = "list-item" bindtap="todetail" data-id ="{{item.id}}" data-img="{{item.imageurl}}">
+            <view class = "img">
+            <image src ="{{'http://localhost:8080/images/'+item.imageurl}}"></image>
+            </view>
+            
+            <view class = "text">
+                <view class = "sub-name">{{item.proname}}</view>
+                <view class = "sub-price">¥{{item.proprice}}</view>
+                <view class = "sub-dec">{{item.proexplain}}</view>
+                <view class = "btn" bindtap="toOrder" data-id="{{item.id}}" data-img="{{item.imageurl}}" data-proname="{{item.proname}}">预约</view>
+            </view>
+
+        </view>
+     </block>
+    </view>
+</view>
+
+

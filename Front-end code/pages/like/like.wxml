@@ -1,0 +1,10 @@
+<!--pages[表情]ke[表情]ke.wxml-->
+<view class="like">
+  <block wx:for="{{data}}" wx:key="data">
+    <view class="likelist">
+      <view class="proname">项目名称：<text class="text">{{item.proname}}</text></view>
+      <view class="proid">项目号：<text class="text">{{item.id}}</text></view>
+      <view class="proexplain">项目详情：<text class="text">{{item.proexplain}}</text></view>
+      </view>
+  </block>
+</view>

@@ -1,0 +1,29 @@
+<!--pages/Tdetail/Tdetail.wxml-->
+
+
+<!--第一层-->
+
+<view class="img">
+  <image wx:if="{{teachers.imageurl}}" src="{{'http://localhost:8080/images/'+teachers.imageurl}}"></image>
+</view>
+<!--第二层-->
+
+<view class="Teachers">
+  <view>
+    <text class="techname">{{teachers.techname}}</text>
+    <text class="techid">编号：{{teachers.id}}号</text>
+  </view>
+
+  <view class="techdesc">{{teachers.techexplain}}</view>
+</view>
+
+<!-- 第三层 -->
+  <view class="techtime">
+    <view class="tt">已被预订时间</view>
+    <view class="time">{{techtime}}</view>
+  </view>
+
+
+<!--第四层-->
+
+<button class="btn" bindtap="toOrder" data-Tname="{{teachers.techname}}" data-Tid="{{teachers.id}}" style= "width: 80%; height: 95rpx; color: whitesmoke; background-color: red; margin-top: 20px;">立即预约</button>

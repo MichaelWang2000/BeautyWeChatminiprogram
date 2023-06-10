@@ -1,0 +1,29 @@
+/* pages[表情]ke[表情]ke.wxss */
+/* pages/orderlist/orderlist.wxss */
+page{
+    height: 100%;
+  }
+  .likelist{
+    width: 100%;
+    height: 200rpx;
+    border-bottom: 1px solid gainsboro;
+  }
+  .proname{
+    margin-top: 20rpx;
+    font-weight: bolder;
+  }
+  .proid{
+    margin-top: 20rpx;
+    font-weight: bolder;
+  }
+  .proexplain{
+    margin-top: 20rpx;
+    font-weight: bolder;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .text{
+    color: gray;
+    
+  }

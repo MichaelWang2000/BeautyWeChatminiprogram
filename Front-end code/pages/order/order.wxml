@@ -1,0 +1,54 @@
+<!-- 第一部分 -->
+<view class="img">
+<image wx:if="{{image}}" src="{{'http://localhost:8080/images/'+image}}"></image>
+</view>
+<!-- 第二部分 -->
+<view class="busInfo">
+  <view class="mt20">  商家名称：<text class="text">{{busname}} </text> </view>
+  <view class="mt20">  项目名称：<text class="text"> {{proname}}</text> </view>
+  <view class="mt20">  服务时间：<text class="text">{{date}} {{time}}</text> </view>
+</view>
+
+<!-- 第三部分 设置日期和时间 -->
+<view class="dataAndTime"> 
+    <!-- 日期 -->
+    <view class="section">
+      <image class="iconImage" src="/images/date.png"></image>
+      <picker mode="date" value="" start="2022-07-02" end="2022-11-11" bindchange="bindDateChange">
+        <view class="picker">
+         {{date}}
+        </view>
+      </picker>
+    </view>
+    <!-- 时间 -->
+    <view class="section">
+     <image src="/images/time.png" class="iconImage"></image>
+      <picker mode="time" value="" start="09:00" end="24:00" bindchange="bindTimeChange">
+        <view class="picker">
+          {{time}}
+        </view>
+      </picker>
+    </view>
+
+</view>
+
+<!-- 第四部分 表单 -->
+<view class="orderForm">
+  <form catchsubmit="formSubmit">
+    <view class="formItem"> 
+        <view class="orderFont">预约宾客姓名：</view>
+        <input placeholder="请输入宾客姓名" type="text" name="username"></input>
+    </view>
+
+    <view class="formItem"> 
+        <view class="orderFont">联系电话：</view>
+        <input placeholder="请输入联系电话" type="number" name="usertell"></input>
+    </view>
+    <view class="formItem"> 
+        <view class="orderFont">留言信息：</view>
+        <input placeholder="请输入留言信息" type="text" name="information"></input>
+    </view>
+    <button  formType="submit" style="width:80%" class="orderBtn">确认预定</button>
+  </form>
+
+</view>

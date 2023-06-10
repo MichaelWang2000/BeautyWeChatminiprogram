@@ -1,0 +1,13 @@
+<!--pages/orderlist/orderlist.wxml-->
+<view class="order">
+  <block wx:for="{{data}}" wx:key="data">
+    <view class="orderlist">
+      <view class="username">预约人：<text class="text">{{item.username}}</text></view>
+      <view class="orderid">订单号：<text class="text">{{item.id}}</text></view>
+      <view class="usertell">联系电话：<text class="text">{{item.usertell}}</text></view>
+      <view class="proname">项目名称：<text class="text">{{item.proname}}</text></view>
+      <view class="makedate">服务时间：<text class="text">{{item.makedate}}</text></view>
+      <view class="Info">留言信息：<text class="text">{{item.information}}</text></view>
+    </view>
+  </block>
+      </view>
