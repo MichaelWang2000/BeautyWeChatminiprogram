@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cqut.beautifulapp.dao.OrderDao">
+
+    <resultMap type="com.cqut.beautifulapp.entity.Order" id="OrderMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="openid" column="openid" jdbcType="VARCHAR"/>
+        <result property="proname" column="proname" jdbcType="VARCHAR"/>
+        <result property="makedate" column="makedate" jdbcType="TIMESTAMP"/>
+        <result property="username" column="username" jdbcType="VARCHAR"/>
+        <result property="orderstate" column="orderstate" jdbcType="VARCHAR"/>
+        <result property="placedate" column="placedate" jdbcType="TIMESTAMP"/>
+        <result property="usertell" column="usertell" jdbcType="VARCHAR"/>
+        <result property="information" column="information" jdbcType="VARCHAR"/>
+        <result property="busid" column="busid" jdbcType="INTEGER"/>
+        <result property="proid" column="proid" jdbcType="INTEGER"/>
+        <result property="tecid" column="tecid" jdbcType="INTEGER"/>
+    </resultMap>
+
+
+    <select id="queryByTid" resultType="com.cqut.beautifulapp.entity.Order">
+    select
+        id, proname, makedate, usertell, information, username, tecid
+    from `order`
+    where username = #{name}
+    </select>
+
+    <!--新增有关技师的订单-->
+    <insert id="insertwithTeacher" keyProperty="id" useGeneratedKeys="true">
+        insert into `order`( makedate, username, usertell, information, tecid)
+        values ( #{makedate}, #{username}, #{usertell}, #{information}, #{tecid})
+    </insert>
+
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="OrderMap">
+        select id,
+               openid,
+               proname,
+               makedate,
+               username,
+               orderstate,
+               placedate,
+               usertell,
+               information,
+               busid,
+               proid,
+               tecid
+        from order
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="OrderMap">
+        select
+        id, openid, proname, makedate, username, orderstate, placedate, usertell, information, busid, proid, tecid
+        from order
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="openid != null and openid != ''">
+                and openid = #{openid}
+            </if>
+            <if test="proname != null and proname != ''">
+                and proname = #{proname}
+            </if>
+            <if test="makedate != null">
+                and makedate = #{makedate}
+            </if>
+            <if test="username != null and username != ''">
+                and username = #{username}
+            </if>
+            <if test="orderstate != null and orderstate != ''">
+                and orderstate = #{orderstate}
+            </if>
+            <if test="placedate != null">
+                and placedate = #{placedate}
+            </if>
+            <if test="usertell != null and usertell != ''">
+                and usertell = #{usertell}
+            </if>
+            <if test="information != null and information != ''">
+                and information = #{information}
+            </if>
+            <if test="busid != null">
+                and busid = #{busid}
+            </if>
+            <if test="proid != null">
+                and proid = #{proid}
+            </if>
+            <if test="tecid != null">
+                and tecid = #{tecid}
+            </if>
+        </where>
+        limit #{pageable.offset}, #{pageable.pageSize}
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from order
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="openid != null and openid != ''">
+                and openid = #{openid}
+            </if>
+            <if test="proname != null and proname != ''">
+                and proname = #{proname}
+            </if>
+            <if test="makedate != null">
+                and makedate = #{makedate}
+            </if>
+            <if test="username != null and username != ''">
+                and username = #{username}
+            </if>
+            <if test="orderstate != null and orderstate != ''">
+                and orderstate = #{orderstate}
+            </if>
+            <if test="placedate != null">
+                and placedate = #{placedate}
+            </if>
+            <if test="usertell != null and usertell != ''">
+                and usertell = #{usertell}
+            </if>
+            <if test="information != null and information != ''">
+                and information = #{information}
+            </if>
+            <if test="busid != null">
+                and busid = #{busid}
+            </if>
+            <if test="proid != null">
+                and proid = #{proid}
+            </if>
+            <if test="tecid != null">
+                and tecid = #{tecid}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into `order`(openid, proname, makedate, username, usertell, information)
+        values (#{openid}, #{proname}, #{makedate}, #{username}, #{usertell}, #{information})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into order(openid, proname, makedate, username, orderstate, placedate, usertell, information, busid,
+        proid, tecid)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.openid}, #{entity.proname}, #{entity.makedate}, #{entity.username}, #{entity.orderstate},
+            #{entity.placedate}, #{entity.usertell}, #{entity.information}, #{entity.busid}, #{entity.proid},
+            #{entity.tecid})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into order(openid, proname, makedate, username, orderstate, placedate, usertell, information, busid,
+        proid, tecid)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.openid}, #{entity.proname}, #{entity.makedate}, #{entity.username}, #{entity.orderstate},
+            #{entity.placedate}, #{entity.usertell}, #{entity.information}, #{entity.busid}, #{entity.proid},
+            #{entity.tecid})
+        </foreach>
+        on duplicate key update
+        openid = values(openid),
+        proname = values(proname),
+        makedate = values(makedate),
+        username = values(username),
+        orderstate = values(orderstate),
+        placedate = values(placedate),
+        usertell = values(usertell),
+        information = values(information),
+        busid = values(busid),
+        proid = values(proid),
+        tecid = values(tecid)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update order
+        <set>
+            <if test="openid != null and openid != ''">
+                openid = #{openid},
+            </if>
+            <if test="proname != null and proname != ''">
+                proname = #{proname},
+            </if>
+            <if test="makedate != null">
+                makedate = #{makedate},
+            </if>
+            <if test="username != null and username != ''">
+                username = #{username},
+            </if>
+            <if test="orderstate != null and orderstate != ''">
+                orderstate = #{orderstate},
+            </if>
+            <if test="placedate != null">
+                placedate = #{placedate},
+            </if>
+            <if test="usertell != null and usertell != ''">
+                usertell = #{usertell},
+            </if>
+            <if test="information != null and information != ''">
+                information = #{information},
+            </if>
+            <if test="busid != null">
+                busid = #{busid},
+            </if>
+            <if test="proid != null">
+                proid = #{proid},
+            </if>
+            <if test="tecid != null">
+                tecid = #{tecid},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete
+        from order
+        where id = #{id}
+    </delete>
+
+</mapper>
+

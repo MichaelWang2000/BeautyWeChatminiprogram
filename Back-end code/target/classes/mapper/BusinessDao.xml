@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cqut.beautifulapp.dao.BusinessDao">
+
+    <resultMap type="com.cqut.beautifulapp.entity.Business" id="BusinessMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="busname" column="busname" jdbcType="VARCHAR"/>
+        <result property="busaddress" column="busaddress" jdbcType="VARCHAR"/>
+        <result property="busexplain" column="busexplain" jdbcType="VARCHAR"/>
+        <result property="bustell" column="bustell" jdbcType="VARCHAR"/>
+        <result property="servertime" column="servertime" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!-- 通过id查找项目名-->
+    <select id="queryByBid" resultType="java.lang.String">
+        select busname
+        from business,project
+        where busid = business.id and project.id =#{id}
+    </select>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BusinessMap">
+        select id,
+               busname,
+               busaddress,
+               busexplain,
+               bustell,
+               servertime
+        from business
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="BusinessMap">
+        select
+        id, busname, busaddress, busexplain, bustell, servertime
+        from business
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="busname != null and busname != ''">
+                and busname = #{busname}
+            </if>
+            <if test="busaddress != null and busaddress != ''">
+                and busaddress = #{busaddress}
+            </if>
+            <if test="busexplain != null and busexplain != ''">
+                and busexplain = #{busexplain}
+            </if>
+            <if test="bustell != null and bustell != ''">
+                and bustell = #{bustell}
+            </if>
+            <if test="servertime != null and servertime != ''">
+                and servertime = #{servertime}
+            </if>
+        </where>
+        limit #{pageable.offset}, #{pageable.pageSize}
+    </select>
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from business
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="busname != null and busname != ''">
+                and busname = #{busname}
+            </if>
+            <if test="busaddress != null and busaddress != ''">
+                and busaddress = #{busaddress}
+            </if>
+            <if test="busexplain != null and busexplain != ''">
+                and busexplain = #{busexplain}
+            </if>
+            <if test="bustell != null and bustell != ''">
+                and bustell = #{bustell}
+            </if>
+            <if test="servertime != null and servertime != ''">
+                and servertime = #{servertime}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into business(busname, busaddress, busexplain, bustell, servertime)
+        values (#{busname}, #{busaddress}, #{busexplain}, #{bustell}, #{servertime})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into business(busname, busaddress, busexplain, bustell, servertime)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.busname}, #{entity.busaddress}, #{entity.busexplain}, #{entity.bustell}, #{entity.servertime})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="id" useGeneratedKeys="true">
+        insert into business(busname, busaddress, busexplain, bustell, servertime)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.busname}, #{entity.busaddress}, #{entity.busexplain}, #{entity.bustell}, #{entity.servertime})
+        </foreach>
+        on duplicate key update
+        busname = values(busname),
+        busaddress = values(busaddress),
+        busexplain = values(busexplain),
+        bustell = values(bustell),
+        servertime = values(servertime)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update business
+        <set>
+            <if test="busname != null and busname != ''">
+                busname = #{busname},
+            </if>
+            <if test="busaddress != null and busaddress != ''">
+                busaddress = #{busaddress},
+            </if>
+            <if test="busexplain != null and busexplain != ''">
+                busexplain = #{busexplain},
+            </if>
+            <if test="bustell != null and bustell != ''">
+                bustell = #{bustell},
+            </if>
+            <if test="servertime != null and servertime != ''">
+                servertime = #{servertime},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete
+        from business
+        where id = #{id}
+    </delete>
+
+</mapper>
+
